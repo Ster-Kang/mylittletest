@@ -126,7 +126,7 @@
 			<version>8.0.33</version>
 		</dependency>
 
-	    <!-- Spring Data JPA -->
+	 <!-- Spring Data JPA -->
 	    <dependency>
 	        <groupId>org.springframework.data</groupId>
 	        <artifactId>spring-data-jpa</artifactId>
@@ -146,7 +146,6 @@
 	        <artifactId>HikariCP</artifactId>
 	        <version>3.4.5</version>
 	    </dependency>
-
 		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
