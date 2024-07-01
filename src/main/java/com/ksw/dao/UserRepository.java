@@ -13,47 +13,7 @@ import com.ksw.object.entity.jpa.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-	User findByUserId(String userId);
-
-	@Modifying
-	@Transactional
-	@Query(value = "INSERT INTO user ("
-			+ "userId, "
-			+ "password, "
-			+ "nickname, "
-			+ "email, "
-			+ "securityQuestion, "
-			+ "securityAnswer, "
-			+ "isActive, "
-			+ "type, "
-			+ "createdAt) "
-			+ "VALUES ("
-			+ ":userId, "
-			+ "SHA2(:password, 256), "
-			+ ":nickname, "
-			+ ":email, "
-			+ ":securityQuestion, "
-			+ ":securityAnswer, "
-			+ ":isActive, "
-			+ ":type, "
-			+ ":createdAt)", 
-			nativeQuery = true)
-	public void join(
-			@Param("userId") String userId, 
-			@Param("password") String password,
-			@Param("nickname") String nickname, 
-			@Param("email") String email,
-			@Param("securityQuestion") Integer securityQuestion, 
-			@Param("securityAnswer") String securityAnswer,
-			@Param("isActive") Boolean isActive, 
-			@Param("type") Integer type, 
-			@Param("createdAt") Timestamp createdAt);
+    @Query("SELECT u FROM User u WHERE u.userId = :userId")
+    User findByUserId(@Param("userId") String userId);
 	
-	@Query(value = "SELECT * FROM user "
-			+ "WHERE userId = :userId "
-			+ "AND password = SHA2(:password, 256)", 
-            nativeQuery = true)
-    User findByUserIdAndPassword(
-    		@Param("userId") String userId, 
-    		@Param("password") String password);
 }
