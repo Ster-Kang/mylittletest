@@ -1,6 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:include page="./include/head.jsp"></jsp:include>
+<link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var pwBtn = document.getElementById('PwBtn');
+    var pwcBtn = document.getElementById('PwcBtn');
+    var pwInput = document.getElementById('userPw');
+    var pwcInput = document.getElementById('Pwc');
+
+    pwBtn.addEventListener('click', function() {
+        if (pwInput.type === 'password') {
+            pwInput.type = 'text';
+            pwBtn.innerHTML = '🙈';
+        } else {
+            pwInput.type = 'password';
+            pwBtn.innerHTML = '👁️';
+        }
+    });
+
+    pwcBtn.addEventListener('click', function() {
+        if (pwcInput.type === 'password') {
+            pwcInput.type = 'text';
+            pwcBtn.innerHTML = '🙈';
+        } else {
+            pwcInput.type = 'password';
+            pwcBtn.innerHTML = '👁️';
+        }
+    });
+});
+</script>
 <style>
 .join_area {
 	width: 30rem;
@@ -83,6 +112,13 @@
 	opacity: 0.5;
 	transition: all 0.2s ease-out;
 }
+.show_password_btn:active {
+    opacity:1;
+}
+
+.show_password_btn:hover {
+    opacity:1;
+}
 
 .send_email_btn {
 	box-shadow: 0.3rem 0.3rem 0.7rem #696969, -0.3rem -0.3rem 0.7rem #696969;
@@ -146,12 +182,8 @@ a {
 </style>
 	<div class="join_area">
 		<h1 class="join_title">환영합니다!</h1>
-		<div class="emoji">
-			<img src="./img/free-icon-swot-5026764.png"
-				style="width: 100px; height: 100px;">
-		</div>
-		<form class="input_area" name="join" id="join" method="post"
-			action="./joincomplete.jsp">
+		<div class="emoji"  style="font-size:80px; text-align:center;">🐨</div>
+		<form class="input_area" name="join" id="join" method="post" action="joincomplete.jsp">
 			<div class="id_input_area">
 				<div class="id_input_container">
 					<input class="id_input" id="userID" name="userID" placeholder="계정"
@@ -217,7 +249,7 @@ a {
 						placeholder="질문 답변 입력" autocomplete="off">
 				</div>
 			</div>
-			<button class="join_btn" type="submit">회원가입</button>
+			<button class="join_btn" type="button" onclick="location.href='joincomplete.jsp'">회원가입</button>
 			<br>
 			<div class="login_box" style="margin-left:10px;">
 				<a href="index.jsp">돌아가기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="login.jsp">기존
